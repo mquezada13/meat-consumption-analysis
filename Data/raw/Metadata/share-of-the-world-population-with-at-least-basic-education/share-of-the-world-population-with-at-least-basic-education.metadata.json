@@ -1,0 +1,59 @@
+{
+  "chart": {
+    "title": "Share of the world's population with formal basic education",
+    "subtitle": "Share of people aged 15 or older who received some formal [primary](#dod:primary-education), [secondary](#dod:secondary-education), or [tertiary](#dod:tertiary-education) education.",
+    "citation": "World Bank (2024); van Zanden, J. et al.; Wittgenstein Centre (2024)",
+    "originalChartUrl": "https://ourworldindata.org/grapher/share-of-the-world-population-with-at-least-basic-education?v=1&csvType=full&useColumnShortNames=false",
+    "selection": [
+      "World"
+    ]
+  },
+  "columns": {
+    "Share of population with no education": {
+      "titleShort": "No formal education",
+      "titleLong": "No formal education",
+      "descriptionShort": "Share of people  aged 15 or older who have not received some kind of formal [primary](#dod:primary-education), [secondary](#dod:secondary-education), or [tertiary](#dod:tertiary-education) education.",
+      "descriptionKey": [
+        "Historical data for educational attainment between 1870 to 1950 comes from van Zanden, J. et al. (2014).",
+        "Data for 1950 to 2015 is sourced from the Wittgenstein Centre Human Capital Centre. These projections are based on collected census and survey data. The SSP2 is a middle-of-the-road scenario that combines medium fertility with medium mortality, medium migration, and the Global Education Trend (GET) education scenario. For more information and other projection models, consult the Wittgenstein Centre for Demography and Global Human Capital's website: https://dataexplorer.wittgensteincentre.org/.",
+        "Data for 2020 onwards is also based on the Medium Shared Socioeconomic Pathways (SSP2) Wittgenstein Centre for Demography and Global Human Capital projections. For more information, see https://pure.iiasa.ac.at/id/eprint/19487/."
+      ],
+      "descriptionProcessing": "For each country and year, the share of the population aged 15 and older with no formal education was calculated. This involved summing up the population with no formal education and dividing it by the total population aged 15 and older for each country and year, then converting this ratio into a percentage.\n\nA global estimate was calculated for each year by summing the total population aged 15 and older across all countries and the total population within this age group with no formal education. The share of the global population aged 15+ with no formal education was then computed for each year.\n\nHistorical data from van Zanden, J. et al. (2014) with estimates from 1870 to 1950 was combined with educational attainment estimates from Wittgenstein Centre for Demography and Global Human Capita.",
+      "shortUnit": "%",
+      "unit": "%",
+      "timespan": "1820-2100",
+      "type": "Numeric",
+      "owidVariableId": 1004194,
+      "shortName": "no_basic_education",
+      "lastUpdated": "2024-12-11",
+      "nextUpdate": "2025-12-11",
+      "citationShort": "World Bank (2024); van Zanden, J. et al.; Wittgenstein Centre (2024) – with major processing by Our World in Data",
+      "citationLong": "World Bank (2024); van Zanden, J. et al.; Wittgenstein Centre (2024) – with major processing by Our World in Data. “No formal education” [dataset]. World Bank, “World Bank Education Statistics (EdStats)”; van Zanden, J. et al., “How Was Life? Global Well-being since 1820 - Education 2014”; Wittgenstein Centre, “Human Capital, Wittgenstein Centre 3” [original data].",
+      "fullMetadata": "https://api.ourworldindata.org/v1/indicators/1004194.metadata.json"
+    },
+    "Share of population with at least some basic education": {
+      "titleShort": "At least some basic education",
+      "titleLong": "At least some basic education",
+      "descriptionShort": "Share of people  aged 15 or older who have received at least some kind of formal [primary](#dod:primary-education), [secondary](#dod:secondary-education), or [tertiary](#dod:tertiary-education) education.",
+      "descriptionKey": [
+        "Historical data for educational attainment between 1870 to 1950 comes from van Zanden, J. et al. (2014).",
+        "Data for 1950 to 2015 is sourced from the Wittgenstein Centre Human Capital Centre. These projections are based on collected census and survey data. The SSP2 is a middle-of-the-road scenario that combines medium fertility with medium mortality, medium migration, and the Global Education Trend (GET) education scenario. For more information and other projection models, consult the Wittgenstein Centre for Demography and Global Human Capital's website: https://dataexplorer.wittgensteincentre.org/.",
+        "Data for 2020 onwards is also based on the Medium Shared Socioeconomic Pathways (SSP2) Wittgenstein Centre for Demography and Global Human Capital projections. For more information, see https://pure.iiasa.ac.at/id/eprint/19487/."
+      ],
+      "descriptionProcessing": "For each country and year, the share of the population aged 15 and older with no formal education was calculated. This involved summing up the population with no formal education and dividing it by the total population aged 15 and older for each country and year, then converting this ratio into a percentage.\n\nA global estimate was calculated for each year by summing the total population aged 15 and older across all countries and the total population within this age group with no formal education. The share of the global population aged 15+ with no formal education was then computed for each year.\n\nHistorical data from van Zanden, J. et al. (2014) with estimates from 1870 to 1950 was combined with educational attainment estimates from Wittgenstein Centre for Demography and Global Human Capita.\n\nTo calculate the share of the population with at least some basic education, the share of the population with no formal education was subtracted from 100%.",
+      "shortUnit": "%",
+      "unit": "%",
+      "timespan": "1820-2100",
+      "type": "Numeric",
+      "owidVariableId": 1004195,
+      "shortName": "basic_education",
+      "lastUpdated": "2024-12-11",
+      "nextUpdate": "2025-12-11",
+      "citationShort": "World Bank (2024); van Zanden, J. et al.; Wittgenstein Centre (2024) – with major processing by Our World in Data",
+      "citationLong": "World Bank (2024); van Zanden, J. et al.; Wittgenstein Centre (2024) – with major processing by Our World in Data. “At least some basic education” [dataset]. World Bank, “World Bank Education Statistics (EdStats)”; van Zanden, J. et al., “How Was Life? Global Well-being since 1820 - Education 2014”; Wittgenstein Centre, “Human Capital, Wittgenstein Centre 3” [original data].",
+      "fullMetadata": "https://api.ourworldindata.org/v1/indicators/1004195.metadata.json"
+    }
+  },
+  "dateDownloaded": "2025-08-05",
+  "activeFilters": {}
+}
