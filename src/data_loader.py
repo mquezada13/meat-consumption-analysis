@@ -3,6 +3,17 @@
 import os
 import pandas as pd
 
+
+
+
+
+
+
+
+#---------------------------------------------------------------------------------------------------------------
+#-------------------------------------------LOADING RAW DATA FUNCTION-------------------------------------------
+#---------------------------------------------------------------------------------------------------------------
+
 def load_raw_data(data_dir='../Data/raw'):
     """
     Loads all raw datasets into a dictionary of pandas DataFrames.
@@ -38,10 +49,5 @@ def load_raw_data(data_dir='../Data/raw'):
         for key, path in files.items()
     }
 
+
     return dfs
-
-
-# Loading the processed data
-
-def load_processed_data(path='../Data/processed/meat_processed_merged_data.csv'):
-    return pd.read_csv(path, header =1)

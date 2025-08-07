@@ -1,32 +1,45 @@
-# 🌿 What Drives Meat Consumption?
-**Project in progress**
+<p align="left">
+<img src="https://img.shields.io/badge/STATUS-EN%20DESAROLLO-green">
+</p>
 
-**Author:** Maura E. Ramirez-Quezada
-**Status:** In development
-**Libraries:** pandas, numpy, matplotlib, pycountry*(to be expanded)*
+***
+ #  🌿 What Drives Meat Consumption?
+***
 
---
-## Project description
-The meat industry has a significant impact on public health, the environment, and global food systems. This project explores meat consumption patterns across different countries and regions using real-world data. The goal is to understand what drives meat consumption and build predictive models to forecast future trends, while also analyzing the environmental footprint.
+## Table of Contents
+- [Motivation](#motivation)
+- [Introduction](#introduction)
+- [Repository Structure](#repository-structure)
+- [Project Phases](#project-phases)
+- [Suggested Data Sources](#suggested-data-sources)
 
-## Repository structure
-For a detailed plan of the project, see [`project_plan.md`](project_plan.md).  
-The datasets and file structure used in the code are outlined here for clarity and reproducibility:
+## Motivation
 
+As a vegetarian deeply interested in data-driven decision-making, I often encounter questions about the real impact of dietary choices on health, the environment, and society. Motivated by this, I decided to use real-world data and machine learning to investigate a fundamental question:
+
+**What drives meat consumption across countries and populations?**
+
+This project combines domain curiosity with technical skills to explore consumption patterns and build predictive models — aiming to contribute both to public understanding and to practical data science development.
+## Introduction
+The meat industry has a significant impact on public health, the environment, and global food systems. This project explores meat consumption patterns across different countries and regions using real-world data. The goal is to understand what drives meat consumption and build predictive models to forecast future trends, while also analyzing the environmental footprint. 
+
+## Repository Structure
+The folder structure of this project is summarized below.  
 
 meat-conssuption-analysis:
     README.md
-    project_plan.ms
+    project_plan.md
     requirements.txt
     notebooks/
-        01_data_exploration.ipynb
-        02_model_training.ipynb
-        03_visualizations.ipynb
+        01_data_processing.ipynb
+        02_data_exploration.ipynb
+        03_model_training.ipynb
+        04_visualizations.ipynb
     Data/
         raw/
             faostat_meat_kg_per_capita.csv
             worldbank_gdp_per_capita.csv
-            worldbank_urban_population.csv'
+            worldbank_urban_population.csv
             share-of-the-world-population-with-at-least-basic-education.csv'
             food_enviroment_impact.csv
             global-meat-production.csv
@@ -38,65 +51,55 @@ meat-conssuption-analysis:
         visualization.py
         data_loader.py
 
+For a more detailed plan of each step and script used, refer to [`project_plan.md`](project_plan.md).
+
+## Project Phases
+
+This project is structured in four main phases:
+
+1. **Data Processing**
+***
+- Initial inspection and cleaning of the input datasets found in [`Data/raw`](/Data/raw/).
+- Merging features and defining the target variable.
+- Final processed dataset is stored in [`Data/processed`](Data/processed).
+
+📓 Notebooks:
+- [`01_data_processing.ipynb`](notebooks/01_data_exploration.ipynb)
+
+📦 Modules:
+- [`data_loader.py`](src/data_loader.py)
+- [`data_processing.py`](src/data_preprocessing.py)
+
+>  *Users interested in practicing full data  cleaning and processing are encouraged to go through these notebooks. Otherwise, the processed data is ready to use.*
+***
 
 
 
-The proyect is structured in three main phasess:
-- **Block 1 – Data Exploration**  
-  Initial inspection, cleaning, and analysis of all input datasets.  
-  Includes unification of input features and definition of the target variable. 
-  Notebook: - [`01_data_exploration.ipynb`](notebooks/01_data_exploration.ipynb)
-  Modules: `data_loader.py` and `data_processing.py`
-
-- **Block 2 – Model Training**  
-  Building a machine learning model to predict meat consumption.  
-  Notebook: `02_model_training.ipynb`
-
-- **Block 3 – Visualizations**  
-  Presenting key results and visual insights through interactive or static plots.  
-  Notebook: `03_visualizations.ipynb`
+2. **Data processing**
+3. **Data Modelling** 
+4. **Visualization**
 
 
-### Block 1 – Data Exploration/processing
 
-In this notebook, we load and explore the raw datasets related to global meat consumption.  
-The goal is to understand the structure, completeness, and key variables of each dataset.  
-We also identify necessary preprocessing steps and visualize the available data to guide the next stages of analysis.
+## Suggested Data Sources
+This project analyzes meat consumption per capita using global datasets from FAOSTAT, the World Bank, and Our World in Data (OWID). Variables include GDP, urbanization, education, environmental impact, and meat production.
 
-**Full notebook:** [01_data_exploration.ipynb](notebooks/01_data_exploration.ipynb)
+### 🥩 Meat Consumption Data
+- [FAO – Food Balance Sheets](https://www.fao.org/faostat/en/#data/FBS)  
+  *Main target variable: annual meat consumption (kg per capita)*
 
----
+### 🌍 Socioeconomic Indicators
+- [World Bank – GDP per capita](https://data.worldbank.org/indicator/NY.GDP.PCAP.CD)  
+- [World Bank – Urban Population (%)](https://data.worldbank.org/indicator/SP.URB.TOTL.IN.ZS)  
+- [OWID – Global Meat Production](https://ourworldindata.org/grapher/global-meat-production?v=1&csvType=full&useColumnShortNames=false)  
 
-#### FAOSTAT Dataset
-- Covers meat consumption (kg per capita per year) in ~190 countries from 2010 to 2022.
-- Includes five meat types (bovine, pigmeat, poultry, etc.).
-- Filtered rows by `Element = "Food supply quantity (kg/capita/yr)"`.
-- Excluded `"Meat, Other"` category.
+### 🌱 Environmental & Educational Context
+- [OWID – Environmental Impact of Food](https://ourworldindata.org/environmental-impacts-of-food)  
+- [OWID – Education Data](https://ourworldindata.org/education)  
 
-#### GDP Dataset
-- **GDP per capita** (Gross Domestic Product per person) is used as a proxy for average income levels.
-- Covers 266 countries from 1960 to 2024.
-- Selected data from `2010` to `2022` only.
-- Dropped irrelevant column `Unnamed: 69`.
-
-#### Urban Population Dataset
-- **Urban population (%)** represents the share of people living in urban areas.
-- Used to evaluate whether urbanization correlates with meat consumption.
-- Covers 266 countries from 1960 to 2024.
-- Selected data from `2010` to `2022` only.
-- Dropped column `Unnamed: 69`.
-
-#### Education Dataset
-- Shows the share of population with basic education in 25 countries from 1820 to 2100.
-- All features are retained for analysis and visualization.
-
-#### Environmental Impact Dataset
-- Provides GHG emissions (kg CO₂e per kg of product) by food type in the year 2010.
-- This dataset is optional and used only for impact visualization.
-- All entries are usable if included.
-
-#### Meat Production Dataset
-- Displays annual meat production for 254 countries from 1961 to 2023.
-- Optional for visualizing production trends or global meat supply.
-- All entries are retained if used.
-### Data processing
+### 🟡 Optional / Alternative Sources
+- [Kaggle – Meat Consumption per Capita](https://www.kaggle.com/datasets/scibearia/meat-consumption-per-capita)  
+  *Optional pre-processed dataset for quick prototyping*
+## Additional Information
+**Author:** Maura E. Ramirez-Quezada
+**Contact** elizza.rmz91@gmail.com
