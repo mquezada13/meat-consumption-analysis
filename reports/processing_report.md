@@ -84,7 +84,7 @@ The codebase uses `pandas` with modular utilities (`data_loader.py`, `data_prepr
 | **Stage**               | **Description**                                                                                          |
 |-------------------------|----------------------------------------------------------------------------------------------------------|
 | **Raw shape**           | 14,614 rows × 4 columns                                                                                   |
-| **Variables selected**  | Retained: `Entity`, `Year`, `Meat, total | ... tonnes`                                                  |
+| **Variables selected**  | Retained: `Entity`, `Year`, `Meat, total... tonnes`                                                 |
 | **Filtering applied**   | Years filtered to 2010–2022 to ensure full overlap with other datasets                                  |
 | **Column renaming**     | Renamed: `Entity → Country`, production column → `Production`                                            |
 | **Transformation**      | No pivoting required; dataset already structured in long format                                          |
