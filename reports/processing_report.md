@@ -31,49 +31,61 @@ The codebase uses `pandas` with modular utilities (`data_loader.py`, `data_prepr
 
 ## 🔧 Dataset-Specific Processing
 ---
-### FAO – Food Balance Sheets
+### 🧼 FAO – Food Balance Sheets
 
-**Initial shape:** 11,864 rows × 15 columns  
-**Relevant variables retained:** `Area`, `Year`, `Item`, `Value` — representing country, year, meat type and consumption (kg per capita).
-
-- Unused fields (e.g., country code, item code, element code) were dropped as they are redundant for this study.
-- Filtered to 2010–2022 to match the overlapping availability across all sources.
-- The `"Meat, Other"` category was excluded due to its ambiguity and inconsistent definition across countries.
-- Columns were renamed to standardize for merging: `Area → Country`, `Value → meat_consumption`.
-- The `Item` column (meat type) was pivoted into separate columns to retain granularity across categories.
-  This approach was preferred over aggregation, as it enables richer analysis by meat type.
-
-**Post-pivot shape:** 2,383 rows × 6 columns  
-
-**Note:** The` Pigmeat` column contains 46 missing values inherited from the source data. These were kept as-is, as further handling will be determined during the exploratory analysis phase.
+| **Stage**               | **Description**                                                                                          |
+|-------------------------|----------------------------------------------------------------------------------------------------------|
+| **Raw shape**           | 11,864 rows × 15 columns                                                                                 |
+| **Variables selected**  | Retained: `Area`, `Year`, `Item`, `Value`, representing country, year, meat type, and consumption (kg/capita) |
+| **Variables dropped**   | Removed: `Area Code`, `Item Code`, `Element Code`, and other metadata not needed for this study          |
+| **Filtering applied**   | - Years filtered to 2010–2022 to align with other datasets  <br> - `"Meat, Other"` excluded due to ambiguous definition |
+| **Column renaming**     | Renamed for consistency: `Area → Country`, `Value → meat_consumption`                                   |
+| **Transformation**      | Pivoted `Item` column to separate columns per meat type (`Bovine Meat`, `Pigmeat`, etc.), preserving analytical granularity |
+| **Final shape**         | 2,383 rows × 6 columns                                                                                    |
+| **Missing data**        | `Pigmeat` column includes 46 missing values inherited from the source. Retained for now; to be handled during EDA |
 
 ---
 
-### World Bank – GDP per Capita
+### 💰 World Bank – GDP per Capita
 
-- Original format: wide (one column per year)
-- Selected only entries with `'Indicator Code' == "NY.GDP.PCAP.CD"`
-- Years filtered to 2010–2022
-- Reshaped into long format (`Country`, `Year`, `GDP_per_capita`)
-- Renamed columns to match standard keys
-
-**Final shape:** 3,458 rows × 3 columns
-
----
-
-### World Bank – Urban Population (%)
-
-- Same structure as the GDP dataset
-- Selected `'Indicator Code' == "SP.URB.TOTL.IN.ZS"`
-- Reshaped to long format (`Country`, `Year`, `urban_population`)
-- Filtered to 2010–2022
-- Renamed columns for consistency
-
-**Final shape:** 3,458 rows × 3 columns
+| **Stage**               | **Description**                                                                                          |
+|-------------------------|----------------------------------------------------------------------------------------------------------|
+| **Raw shape**           | Wide format: one column per year, covering 1960–2024                                                     |
+| **Variables selected**  | Filtered to include only rows with `Indicator Code == "NY.GDP.PCAP.CD"`                                  |
+| **Filtering applied**   | Years filtered to 2010–2022 to ensure overlap with other datasets                                        |
+| **Column renaming**     | Renamed: `Country Name → Country`, value column → `GDP_per_capita`                                       |
+| **Transformation**      | Reshaped from wide to long format: `Country`, `Year`, `GDP_per_capita`                                   |
+| **Final shape**         | 3,458 rows × 3 columns                                                                                    |
+| **Missing data**        | None within selected time range                                                                          |
 
 ---
 
-### OWID – Global Meat Production
+### 🏙️ World Bank – Urban Population (%)
+
+| **Stage**               | **Description**                                                                                          |
+|-------------------------|----------------------------------------------------------------------------------------------------------|
+| **Raw shape**           | Wide format: one column per year, covering 1960–2024                                                     |
+| **Variables selected**  | Filtered to rows with `Indicator Code == "SP.URB.TOTL.IN.ZS"`                                            |
+| **Filtering applied**   | Years restricted to 2010–2022 to match range across datasets                                             |
+| **Column renaming**     | Renamed: `Country Name → Country`, value column → `urban_population`                                     |
+| **Transformation**      | Reshaped to long format with columns: `Country`, `Year`, `urban_population`                             |
+| **Final shape**         | 3,458 rows × 3 columns                                                                                    |
+| **Missing data**        | None within selected time range                                                                          |
+
+---
+
+### 🏭 OWID – Global Meat Production
+
+| **Stage**               | **Description**                                                                                          |
+|-------------------------|----------------------------------------------------------------------------------------------------------|
+| **Raw shape**           | Long format: data from 1961 to 2023                                                                      |
+| **Variables selected**  | Retained: `Entity`, `Year`, `Meat, total | ... tonnes`                                                  |
+| **Filtering applied**   | Years filtered to 2010–2022 to ensure full overlap with other datasets                                  |
+| **Column renaming**     | Renamed: `Entity → Country`, production column → `Production`                                            |
+| **Transformation**      | No pivoting required; dataset already structured in long format                                          |
+| **Final shape**         | 14,613 rows × 3 columns                                                                                   |
+| **Missing data**        | No missing values detected in selected range                                                             |
+
 
 - Retained columns: `Entity`, `Year`, `Meat, total | ... tonnes`
 - Renamed `Entity → Country`, `...tonnes → Production`
