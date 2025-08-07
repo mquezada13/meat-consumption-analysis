@@ -1,5 +1,5 @@
 # 🧼 Data Harmonization Report (2010–2022)  
-*Unifying Global Meat Consumption & Socioeconomic Indicators for Predictive Modeling*
+*Standardization and merging of raw meat consumption and socioeconomic datasets for modeling and visualization*
 
 **Author:** Maura E. Ramirez-Quezada  
 **Deliverable:** [`meat_processed_merged_data.csv`](Data/processed/meat_processed_merged_data.csv)  
@@ -11,7 +11,7 @@
 
 This report summarizes the data processing stage of the project. The goal was to consolidate real-world datasets on meat consumption and socioeconomic indicators into a unified, time-aligned, and analysis-ready dataset. The resulting table will serve as the foundation for downstream modeling, exploratory analysis, and visualizations.
 
-The codebase uses `pandas`, with modular utilities (`data_loader.py`, `data_preprocessing.py`) to ensure reproducibility and consistent preprocessing across all sources.
+The codebase uses `pandas` with modular utilities (`data_loader.py`, `data_preprocessing.py`) to ensure reproducibility and consistent preprocessing across all sources.
 
 ---
 
@@ -45,7 +45,7 @@ The codebase uses `pandas`, with modular utilities (`data_loader.py`, `data_prep
 
 **Post-pivot shape:** 2,383 rows × 6 columns  
 **Note:** The` Pigmeat` column contains 46 missing values inherited from the source data. These were kept as-is, as further handling will be determined during the exploratory analysis phase.
-
+---
 ### World Bank – GDP per Capita
 
 - Original format: wide (one column per year)
