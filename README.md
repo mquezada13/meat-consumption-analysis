@@ -80,6 +80,9 @@ This project is structured in four main phases:
 4. **Visualization**
 
 
+## 📄 Reports
+
+- [Data Processing Report](reports/processing_report.md)
 
 ## Suggested Data Sources
 This project analyzes meat consumption per capita using global datasets from FAOSTAT, the World Bank, and Our World in Data (OWID). Variables include GDP, urbanization, education, environmental impact, and meat production.
@@ -102,4 +105,5 @@ This project analyzes meat consumption per capita using global datasets from FAO
   *Optional pre-processed dataset for quick prototyping*
 ## Additional Information
 **Author:** Maura E. Ramirez-Quezada
+
 **Contact** elizza.rmz91@gmail.com
