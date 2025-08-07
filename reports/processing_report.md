@@ -30,7 +30,9 @@ The codebase uses `pandas` with modular utilities (`data_loader.py`, `data_prepr
 
 
 ## 🔧 Dataset-Specific Processing
+
 ---
+
 ### 🧼 FAO – Food Balance Sheets
 
 | **Stage**               | **Description**                                                                                          |
@@ -43,6 +45,7 @@ The codebase uses `pandas` with modular utilities (`data_loader.py`, `data_prepr
 | **Transformation**      | Pivoted `Item` column to separate columns per meat type (`Bovine Meat`, `Pigmeat`, etc.), preserving analytical granularity |
 | **Final shape**         | 2,383 rows × 6 columns                                                                                    |
 | **Missing data**        | `Pigmeat` column includes 46 missing values inherited from the source. Retained for now; to be handled during EDA |
+| **Data types**          | `float64` (meat types), `int64` (`Year`), `object` (`Country`)                                           |
 
 ---
 
@@ -50,13 +53,14 @@ The codebase uses `pandas` with modular utilities (`data_loader.py`, `data_prepr
 
 | **Stage**               | **Description**                                                                                          |
 |-------------------------|----------------------------------------------------------------------------------------------------------|
-| **Raw shape**           | Wide format: one column per year, covering 1960–2024                                                     |
-| **Variables selected**  | Filtered to include only rows with `Indicator Code == "NY.GDP.PCAP.CD"`                                  |
+| **Raw shape**           | 266 countries × 70 columns (years from 1960 to 2024), wide format                                        |
+| **Variables selected**  | Filtered to rows with `Indicator Code == "NY.GDP.PCAP.CD"`                                               |
 | **Filtering applied**   | Years filtered to 2010–2022 to ensure overlap with other datasets                                        |
 | **Column renaming**     | Renamed: `Country Name → Country`, value column → `GDP_per_capita`                                       |
 | **Transformation**      | Reshaped from wide to long format: `Country`, `Year`, `GDP_per_capita`                                   |
 | **Final shape**         | 3,458 rows × 3 columns                                                                                    |
 | **Missing data**        | None within selected time range                                                                          |
+| **Data types**          | `object` (`Country`), `int64` (`Year`), `float64` (`GDP_per_capita`)                                     |
 
 ---
 
@@ -64,13 +68,14 @@ The codebase uses `pandas` with modular utilities (`data_loader.py`, `data_prepr
 
 | **Stage**               | **Description**                                                                                          |
 |-------------------------|----------------------------------------------------------------------------------------------------------|
-| **Raw shape**           | Wide format: one column per year, covering 1960–2024                                                     |
+| **Raw shape**           | 266 countries × 70 columns (years from 1960 to 2024), wide format                                        |
 | **Variables selected**  | Filtered to rows with `Indicator Code == "SP.URB.TOTL.IN.ZS"`                                            |
 | **Filtering applied**   | Years restricted to 2010–2022 to match range across datasets                                             |
 | **Column renaming**     | Renamed: `Country Name → Country`, value column → `urban_population`                                     |
 | **Transformation**      | Reshaped to long format with columns: `Country`, `Year`, `urban_population`                             |
 | **Final shape**         | 3,458 rows × 3 columns                                                                                    |
 | **Missing data**        | None within selected time range                                                                          |
+| **Data types**          | `object` (`Country`), `int64` (`Year`), `float64` (`urban_population`)                                   |
 
 ---
 
@@ -78,49 +83,44 @@ The codebase uses `pandas` with modular utilities (`data_loader.py`, `data_prepr
 
 | **Stage**               | **Description**                                                                                          |
 |-------------------------|----------------------------------------------------------------------------------------------------------|
-| **Raw shape**           | Long format: data from 1961 to 2023                                                                      |
+| **Raw shape**           | 14,614 rows × 4 columns                                                                                   |
 | **Variables selected**  | Retained: `Entity`, `Year`, `Meat, total | ... tonnes`                                                  |
 | **Filtering applied**   | Years filtered to 2010–2022 to ensure full overlap with other datasets                                  |
 | **Column renaming**     | Renamed: `Entity → Country`, production column → `Production`                                            |
 | **Transformation**      | No pivoting required; dataset already structured in long format                                          |
 | **Final shape**         | 14,613 rows × 3 columns                                                                                   |
 | **Missing data**        | No missing values detected in selected range                                                             |
-
-
-- Retained columns: `Entity`, `Year`, `Meat, total | ... tonnes`
-- Renamed `Entity → Country`, `...tonnes → Production`
-- Filtered to 2010–2022
-
-**Final shape:**  14,613 rows × 3 columns
+| **Data types**          | `object` (`Country`), `int64` (`Year`), `float64` (`Production`)                                         |
 
 ---
 
 ## 🔗 Merging Strategy
 
-- All datasets were harmonized to use `Country` (object) and `Year` (int) as keys
-- Country names were standardized using `country_converter`, with a custom dictionary for unresolved cases (e.g., “USA” vs “United States”)
-- Duplicates or overlapping entries were checked prior to merging
-- Datasets were merged using inner joins on [`'Country'`, `'Year'`], applied sequentially to preserve consistency and ensure complete records across all sources.
-- The logic was implemented in `data_preprocessing.py` via a modular function
-- Optional datasets (education, emissions) were not merged at this stage
+- All datasets were harmonized to use `Country` (object) and `Year` (int) as merge keys.
+- Country names were standardized using the `country_converter` library, supported by a custom dictionary for unresolved cases (e.g., `"USA"` → `"United States"`).
+- Dataframes were verified for duplicates or inconsistent entries before merging.
+- Merging was implemented sequentially using **inner joins** on `['Country', 'Year']` to ensure that all rows contain complete information across datasets.
+- The merging logic was encapsulated in a function within `data_preprocessing.py`, which iteratively joins pairs of cleaned datasets into a unified master DataFrame.
 
 ---
 
 ## ✅ Final Output Summary
 
-| Metric                  | Value              |
-|--------------------------|--------------------|
-| Final dataset shape      | 2,609 rows × 9 columns |
-| Years covered            | 2010–2022          |
-| Countries included       |  187        |
-| Columns                  | `'Country'`, `'Year'`, `'Bovine Meat'`, `'Mutton & Goat Meat'`, `'Pigmeat'`,`'Poultry Meat'`, `'GDP_per_capita'`, `'urban_population'`, `'Production'`|
-| Columns with missing data| `Pigmeat` only  |
-| Output file              | `Data/processed/meat_processed_merged_data.csv`|
+| Metric                    | Value                           |
+|---------------------------|----------------------------------|
+| Final dataset shape       | 2,609 rows × 9 columns           |
+| Years covered             | 2010–2022                        |
+| Countries included        | 187                              |
+| Columns                   | `'Country'`, `'Year'`, `'Bovine Meat'`, `'Mutton & Goat Meat'`, `'Pigmeat'`, `'Poultry Meat'`, `'GDP_per_capita'`, `'urban_population'`, `'Production'` |
+| Columns with missing data | `Pigmeat` only (46 source-level missing values) |
+| Output file               | `Data/processed/meat_processed_merged_data.csv` |
 
 ---
 
 ## 🧭 Notes
-- Only `Pigmeat` includes known missing values (46 entries inherited from source). Other columns were validated for completeness across the selected range.
+
+- All data processing was performed using `pandas`, and data loading/merging was modularized via `data_loader.py` and `data_preprocessing.py`.
+- Column names were standardized across all datasets before merging.
 - No feature scaling, outlier removal, or imputation was performed at this stage.
-- This dataset is now ready for use in modeling pipelines, EDA, or dashboard visualizations.
-- For questions about specific filters or merge behavior, refer to the preprocessing module logic.
+- All numerical columns were validated for consistency over the 2010–2022 period.
+- This dataset is now ready for exploratory analysis, modeling pipelines, or dashboard visualizations.
