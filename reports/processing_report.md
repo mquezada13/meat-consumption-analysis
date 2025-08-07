@@ -44,8 +44,11 @@ The codebase uses `pandas` with modular utilities (`data_loader.py`, `data_prepr
   This approach was preferred over aggregation, as it enables richer analysis by meat type.
 
 **Post-pivot shape:** 2,383 rows × 6 columns  
+
 **Note:** The` Pigmeat` column contains 46 missing values inherited from the source data. These were kept as-is, as further handling will be determined during the exploratory analysis phase.
+
 ---
+
 ### World Bank – GDP per Capita
 
 - Original format: wide (one column per year)
