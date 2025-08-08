@@ -19,10 +19,10 @@ The codebase uses `pandas` with modular utilities (`data_loader.py`, `data_prepr
 
 | Source     | File Name                                            | Raw Span    | Used Span   |
 |------------|------------------------------------------------------|-------------|-------------|
-| FAO        | `faostat_meat_kg_per_capita.csv`                    | 2010–2022   | 2010–2022   |
-| World Bank | `worldbank_gdp_per_capita.csv`                      | 1960–2024   | 2010–2022   |
-| World Bank | `worldbank_urban_population.csv`                    | 1960–2024   | 2010–2022   |
-| OWID       | `global-meat-production.csv`                        | 1961–2023   | 2010–2022   |
+| FAO        | `faostat_meat_kg_per_capita.csv`                    | 2010–2022   | 2010–2022    |
+| World Bank | `worldbank_gdp_per_capita.csv`                      | 1960–2024   | 2010–2022    |
+| World Bank | `worldbank_urban_population.csv`                    | 1960–2024   | 2010–2022    |
+| OWID       | `global-meat-production.csv`                        | 1961–2023   | 2010–2022    |
 
 ---
 **We selected the 2010–2022 range because it is the only period with full coverage across all datasets, allowing consistent modeling without relying on extrapolation or heavy imputation.**
@@ -58,7 +58,7 @@ The codebase uses `pandas` with modular utilities (`data_loader.py`, `data_prepr
 | **Filtering applied**   | Years filtered to 2010–2022 to ensure overlap with other datasets                                        |
 | **Column renaming**     | Renamed: `Country Name → Country`, value column → `GDP_per_capita`                                       |
 | **Transformation**      | Reshaped from wide to long format: `Country`, `Year`, `GDP_per_capita`                                   |
-| **Final shape**         | 3,458 rows × 3 columns                                                                                    |
+| **Final shape**         | 3,458 rows × 3 columns                                                                                   |
 | **Missing data**        | None within selected time range                                                                          |
 | **Data types**          | `object` (`Country`), `int64` (`Year`), `float64` (`GDP_per_capita`)                                     |
 
@@ -72,8 +72,8 @@ The codebase uses `pandas` with modular utilities (`data_loader.py`, `data_prepr
 | **Variables selected**  | Filtered to rows with `Indicator Code == "SP.URB.TOTL.IN.ZS"`                                            |
 | **Filtering applied**   | Years restricted to 2010–2022 to match range across datasets                                             |
 | **Column renaming**     | Renamed: `Country Name → Country`, value column → `urban_population`                                     |
-| **Transformation**      | Reshaped to long format with columns: `Country`, `Year`, `urban_population`                             |
-| **Final shape**         | 3,458 rows × 3 columns                                                                                    |
+| **Transformation**      | Reshaped to long format with columns: `Country`, `Year`, `urban_population`                              |
+| **Final shape**         | 3,458 rows × 3 columns                                                                                   |
 | **Missing data**        | None within selected time range                                                                          |
 | **Data types**          | `object` (`Country`), `int64` (`Year`), `float64` (`urban_population`)                                   |
 
@@ -83,12 +83,12 @@ The codebase uses `pandas` with modular utilities (`data_loader.py`, `data_prepr
 
 | **Stage**               | **Description**                                                                                          |
 |-------------------------|----------------------------------------------------------------------------------------------------------|
-| **Raw shape**           | 14,614 rows × 4 columns                                                                                   |
-| **Variables selected**  | Retained: `Entity`, `Year`, `Meat, total... tonnes`                                                 |
-| **Filtering applied**   | Years filtered to 2010–2022 to ensure full overlap with other datasets                                  |
+| **Raw shape**           | 14,614 rows × 4 columns                                                                                  |
+| **Variables selected**  | Retained: `Entity`, `Year`, `Meat, total... tonnes`                                                      |
+| **Filtering applied**   | Years filtered to 2010–2022 to ensure full overlap with other datasets                                   |
 | **Column renaming**     | Renamed: `Entity → Country`, production column → `Production`                                            |
 | **Transformation**      | No pivoting required; dataset already structured in long format                                          |
-| **Final shape**         | 14,613 rows × 3 columns                                                                                   |
+| **Final shape**         | 14,613 rows × 3 columns                                                                                  |
 | **Missing data**        | No missing values detected in selected range                                                             |
 | **Data types**          | `object` (`Country`), `int64` (`Year`), `float64` (`Production`)                                         |
 
@@ -106,7 +106,7 @@ The codebase uses `pandas` with modular utilities (`data_loader.py`, `data_prepr
 
 ## ✅ Final Output Summary
 
-| Metric                    | Value                           |
+| Metric                    | Value                            |
 |---------------------------|----------------------------------|
 | Final dataset shape       | 2,609 rows × 9 columns           |
 | Years covered             | 2010–2022                        |
