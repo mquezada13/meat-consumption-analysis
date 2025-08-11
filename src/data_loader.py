@@ -13,8 +13,8 @@ import pandas as pd
 #---------------------------------------------------------------------------------------------------------------
 #-------------------------------------------LOADING RAW DATA FUNCTION-------------------------------------------
 #---------------------------------------------------------------------------------------------------------------
-
-def load_raw_data(data_dir='../Data/raw'):
+# TODO: Create a more generic function to load data from different sources
+def load_raw_data(data_dir:str = '../Data/raw') -> dict:
     """
     Loads all raw datasets into a dictionary of pandas DataFrames.
 

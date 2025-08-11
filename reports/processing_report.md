@@ -54,7 +54,7 @@ The codebase uses `pandas` with modular utilities (`data_loader.py`, `data_prepr
 | **Stage**               | **Description**                                                                                          |
 |-------------------------|----------------------------------------------------------------------------------------------------------|
 | **Raw shape**           | 266 countries × 70 columns (years from 1960 to 2024), wide format                                        |
-| **Variables selected**  | Filtered to rows with `Indicator Code == "NY.GDP.PCAP.CD"`                                               |
+| **Variables selected**  | Filtered to rows with  `Indicator Name == 'GDP per capita (current US$)'`                                                |
 | **Filtering applied**   | Years filtered to 2010–2022 to ensure overlap with other datasets                                        |
 | **Column renaming**     | Renamed: `Country Name → Country`, value column → `GDP_per_capita`                                       |
 | **Transformation**      | Reshaped from wide to long format: `Country`, `Year`, `GDP_per_capita`                                   |
@@ -69,7 +69,7 @@ The codebase uses `pandas` with modular utilities (`data_loader.py`, `data_prepr
 | **Stage**               | **Description**                                                                                          |
 |-------------------------|----------------------------------------------------------------------------------------------------------|
 | **Raw shape**           | 266 countries × 70 columns (years from 1960 to 2024), wide format                                        |
-| **Variables selected**  | Filtered to rows with `Indicator Code == "SP.URB.TOTL.IN.ZS"`                                            |
+| **Variables selected**  | Filtered to rows with `Indicator Name == 'Urban population (% of total population)'`                                            |
 | **Filtering applied**   | Years restricted to 2010–2022 to match range across datasets                                             |
 | **Column renaming**     | Renamed: `Country Name → Country`, value column → `urban_population`                                     |
 | **Transformation**      | Reshaped to long format with columns: `Country`, `Year`, `urban_population`                              |

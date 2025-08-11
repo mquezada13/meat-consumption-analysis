@@ -22,7 +22,6 @@ This project integrates real-world datasets from reputable sources, including:
   * [OWID – Global Meat Production](https://ourworldindata.org/grapher/global-meat-production?v=1&csvType=full&useColumnShortNames=false) 
   * [OWID – Environmental Impact of Food](https://ourworldindata.org/environmental-impacts-of-food)  
   * [OWID – Education Data](https://ourworldindata.org/education)  
-  * [Kaggle – Meat Consumption per Capita](https://www.kaggle.com/datasets/scibearia/meat-consumption-per-capita) 
 
 **Key features of interest are:**
 
