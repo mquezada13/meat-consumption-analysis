@@ -2,7 +2,7 @@
 *Standardization and merging of raw meat consumption and socioeconomic datasets for modeling and visualization*
 
 **Author:** Maura E. Ramirez-Quezada  
-**Deliverable:** [`meat_processed_merged_data.csv`](Data/processed/meat_processed_merged_data.csv)  
+**Deliverable:** [`meat_processed_merged_data.csv`](Data/raw/meat_processed_merged_data.csv)  & [`meat_processed_merged_cleaned_data.csv`](Data/processed/meat_processed_merged_data.csv)
 **Scope:** Standardization and merging of raw socioeconomic and consumption datasets for further modeling and visualization
 
 ---

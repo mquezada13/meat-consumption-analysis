@@ -63,8 +63,7 @@ meat-conssuption-analysis:
         visualization.py
         data_loader.py
     reports/
-        DQA_report.md
-        data_exploration_report.md
+        data_eprocessing_report.md
 
 
 For a detailed step-by-step plan, see [`project_plan.md`](project_plan.md).
