@@ -15,8 +15,10 @@ Detailed processing decisions are documented in the data processing report.
 
 ### 2.1 Dominant Meat Types Across Countries
 
-![Average distribution of meat consumption](figures/ave_meat_by_group.png)
-![Most consumed meat average](figures/most_consumed_meat_avg.png)
+![Average distribution of meat consumption](../figures/ave_meat_by_group.png)
+
+![Most consumed meat (average)](../figures/most_consumed_meat_avg.png)
+
 
 **<span style="color:#F4E6A1;"><strong>Summary</strong></span>**
 
@@ -29,9 +31,10 @@ Pigmeat and bovine meat dominate consumption only in a smaller subset of countri
 
 ### 2.2 Countries Consuming the Most of Each Meat Type
 
-![Global distribution by meat type](figures/GlobalDistributionofmeatConsumption.png)
+![Global distribution by meat type](../figures/GlobalDistributionofmeatConsumption.png)
 
-![Top 10 countries by meat type](figures/Top10CountriesbymeatConsumption.png)
+![Top 10 countries by meat type](../figures/Top10CountriesbymeatConsumption.png)
+
 
 **<span style="color:#F4E6A1;"><strong>Summary</strong></span>**
 
@@ -50,7 +53,7 @@ The strong skewness and heterogeneity observed across meat-specific distribution
 
 ### 2.3 Evolution of Global Per-Capita Meat Consumption (2010–2022)
 
-![Global average meat consumption over time](figures/GlobalAverageMeatConsumptionOvertheYears.png)
+![Global average meat consumption over time](../figures/GlobalAverageMeatConsumptionOvertheYears.png)
 
 **<span style="color:#F4E6A1;"><strong>Summary</strong></span>**
 
@@ -62,7 +65,7 @@ This global metric represents an unweighted average across countries and should 
 
 ### 2.4 Top 10 Countries by Overall Meat Consumption
 
-![Top 10 countries time series](figures/Top10CountriesbyAverageMeatConsumptionOverTime.png)
+![Top 10 countries time series](../figures/Top10CountriesbyAverageMeatConsumptionOverTime.png)
 
 **<span style="color:#F4E6A1;"><strong>Summary</strong></span>**
 
