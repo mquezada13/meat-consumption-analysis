@@ -1,109 +1,158 @@
 <p align="left">
-<img src="https://img.shields.io/badge/STATUS-EN%20DESAROLLO-green">
+<img src="https://img.shields.io/badge/STATUS-IN%20DEVELOPMENT-green">
 </p>
 
-***
- #  🌿 What Drives Meat Consumption?
-***
+# 🌿 What Drives Meat Consumption?
 
-## Table of Contents
-- [Motivation](#motivation)
-- [Introduction](#introduction)
-- [Repository Structure](#repository-structure)
-- [Project Phases](#project-phases)
-- [Suggested Data Sources](#suggested-data-sources)
+## Overview
+
+This project investigates **what drives meat consumption per capita across countries** using real-world socioeconomic and environmental data.  
+The primary goal is to **build interpretable predictive models** that explain cross-country variation in meat consumption, while maintaining a strong focus on analytical reasoning, model evaluation, and clear communication.
+
+The project is designed as a **professional data science case study**, emphasizing decision-making over purely descriptive analysis.
+
+---
 
 ## Motivation
 
-As a vegetarian deeply interested in data-driven decision-making, I often encounter questions about the real impact of dietary choices on health, the environment, and society. Motivated by this, I decided to use real-world data and machine learning to investigate a fundamental question:
+As a vegetarian interested in data-driven decision-making, I frequently encounter claims about the impact of dietary choices on health, the environment, and society. This project approaches the topic from a **descriptive and predictive perspective**, without normative judgments, using data to understand *patterns* rather than to advocate for specific behaviors.
 
-**What drives meat consumption across countries and populations?**
+The objective is twofold:
+- To explore and model meat consumption patterns across countries.
+- To demonstrate applied data analysis and machine learning skills using real, imperfect datasets.
 
-This project combines domain curiosity with technical skills to explore consumption patterns and build predictive models — aiming to contribute both to public understanding and to practical data science development.
-## Introduction
-The meat industry has a significant impact on public health, the environment, and global food systems. This project explores meat consumption patterns across different countries and regions using real-world data. The goal is to understand what drives meat consumption and build predictive models to forecast future trends, while also analyzing the environmental footprint. 
+---
+
+## Research Questions
+
+The project is organized around the following core questions:
+
+1. **Can meat consumption per capita be predicted using socioeconomic indicators?**
+2. **Which factors explain most of the variation across countries?**
+3. **How interpretable are different modeling approaches in this context?**
+4. *(Extension)* Do higher predicted consumption levels correlate with higher environmental impact?
+
+---
 
 ## Repository Structure
+
 The folder structure of this project is summarized below.  
 
-meat-conssuption-analysis:
-    README.md
-    project_plan.md
-    requirements.txt
-    notebooks/
-        01_data_processing.ipynb
-        02_data_exploration.ipynb
-        03_model_training.ipynb
-        04_visualizations.ipynb
-    Data/
-        raw/
-            faostat_meat_kg_per_capita.csv
-            worldbank_gdp_per_capita.csv
-            worldbank_urban_population.csv
-            share-of-the-world-population-with-at-least-basic-education.csv'
-            food_enviroment_impact.csv
-            global-meat-production.csv
-        processed/
-            meat_processed_merged_data.csv
-    src/
-        data_preprocessing.py
-        model_utils.py
-        visualization.py
-        data_loader.py
+meat-consumption-analysis/
+│
+├── README.md
+├── project_plan.md
+├── requirements.txt
+│
+├── notebooks/
+│ ├── 01_data_processing.ipynb
+│ ├── 02_data_exploration.ipynb
+│ ├── 03_model_training.ipynb
+│ └── 04_visualizations.ipynb
+│
+├── data/
+│ ├── raw/
+│ │ ├── faostat_meat_kg_per_capita.csv
+│ │ ├── worldbank_gdp_per_capita.csv
+│ │ ├── worldbank_urban_population.csv
+│ │ ├── owid_education.csv
+│ │ ├── environmental_impact_food.csv
+│ │ └── global_meat_production.csv
+│ │
+│ └── processed/
+│ └── meat_consumption_merged.csv
+│
+├── src/
+│ ├── data_loader.py
+│ ├── data_preprocessing.py
+│ ├── model_utils.py
+│ └── visualization.py
+│
+└── reports/
+└── processing_report.md
 
-For a more detailed plan of each step and script used, refer to [`project_plan.md`](project_plan.md).
+For a detailed step-by-step plan, see [`project_plan.md`](project_plan.md).
+
+---
 
 ## Project Phases
 
-This project is structured in four main phases:
+### 1. Data Processing
+- Cleaning and harmonizing country-level datasets.
+- Feature selection and target definition.
+- Final merged dataset stored in `data/processed/`.
 
-1. **Data Processing**
-***
-- Initial inspection and cleaning of the input datasets found in [`Data/raw`](/Data/raw/).
-- Merging features and defining the target variable.
-- Final processed dataset is stored in [`Data/processed`](Data/processed).
-
-📓 Notebooks:
-- [`01_data_processing.ipynb`](notebooks/01_data_exploration.ipynb)
+📓 Notebook:
+- `01_data_processing.ipynb`
 
 📦 Modules:
-- [`data_loader.py`](src/data_loader.py)
-- [`data_processing.py`](src/data_preprocessing.py)
+- `data_loader.py`
+- `data_preprocessing.py`
 
->  *Users interested in practicing full data  cleaning and processing are encouraged to go through these notebooks. Otherwise, the processed data is ready to use.*
-***
+---
 
+### 2. Exploratory Data Analysis
+- Examination of feature distributions and outliers.
+- Analysis of relationships between meat consumption and socioeconomic indicators.
+- Identification of modeling implications (e.g. non-linearity, scaling, collinearity).
 
+📓 Notebook:
+- `02_data_exploration.ipynb`
 
-2. **Data processing**
-3. **Data Modelling** 
-4. **Visualization**
+This phase explicitly informs **model selection and feature engineering**, rather than serving as descriptive visualization only.
 
+---
 
-## 📄 Reports
+### 3. Predictive Modeling *(in progress)*
+- Supervised regression models to predict meat consumption per capita.
+- Baseline models (e.g. linear regression) and more flexible approaches (e.g. regularized models, tree-based methods).
+- Model evaluation using appropriate metrics (RMSE, R²).
+- Emphasis on **interpretability and generalization**, not leaderboard optimization.
 
-- [Data Processing Report](reports/processing_report.md)
+📓 Notebook:
+- `03_model_training.ipynb`
 
-## Suggested Data Sources
-This project analyzes meat consumption per capita using global datasets from FAOSTAT, the World Bank, and Our World in Data (OWID). Variables include GDP, urbanization, education, environmental impact, and meat production.
+---
 
-### 🥩 Meat Consumption Data
-- [FAO – Food Balance Sheets](https://www.fao.org/faostat/en/#data/FBS)  
-  *Main target variable: annual meat consumption (kg per capita)*
+### 4. Interpretation & Visualization *(planned)*
+- Feature importance and model explainability.
+- Comparative analysis across regions.
+- Clear visual communication of results.
+
+📓 Notebook:
+- `04_visualizations.ipynb`
+
+---
+
+## Data Sources
+
+This project uses publicly available global datasets:
+
+### 🥩 Meat Consumption
+- FAOSTAT – Food Balance Sheets  
+  *Annual meat consumption (kg per capita)*
 
 ### 🌍 Socioeconomic Indicators
-- [World Bank – GDP per capita](https://data.worldbank.org/indicator/NY.GDP.PCAP.CD)  
-- [World Bank – Urban Population (%)](https://data.worldbank.org/indicator/SP.URB.TOTL.IN.ZS)  
-- [OWID – Global Meat Production](https://ourworldindata.org/grapher/global-meat-production?v=1&csvType=full&useColumnShortNames=false)  
+- World Bank – GDP per capita  
+- World Bank – Urban population (%)
+- Our World in Data – Education indicators
+- Our World in Data – Global meat production
 
-### 🌱 Environmental & Educational Context
-- [OWID – Environmental Impact of Food](https://ourworldindata.org/environmental-impacts-of-food)  
-- [OWID – Education Data](https://ourworldindata.org/education)  
+### 🌱 Environmental Context *(extension)*
+- Our World in Data – Environmental impacts of food production
 
-### 🟡 Optional / Alternative Sources
-- [Kaggle – Meat Consumption per Capita](https://www.kaggle.com/datasets/scibearia/meat-consumption-per-capita)  
-  *Optional pre-processed dataset for quick prototyping*
-## Additional Information
-**Author:** Maura E. Ramirez-Quezada
+---
 
-**Contact** elizza.rmz91@gmail.com
+## Scope and Limitations
+
+- This project focuses on **prediction and explanation**, not causal inference.
+- Country-level aggregation limits individual-level conclusions.
+- Environmental analysis is treated as a correlational extension.
+
+---
+
+## Author
+
+**Maura E. Ramirez-Quezada**
+
+Contact: elizza.rmz91@gmail.com
