@@ -15,8 +15,8 @@ Detailed processing decisions are documented in the data processing report.
 
 ### 2.1 Dominant Meat Types Across Countries
 
-![Average distribution of meat consumption](figures/ave_meat_by_group.pdf.png)
-![Most consudem meat average](figures/most_consumed_meat_avg.pdf.png)
+![Average distribution of meat consumption](figures/ave_meat_by_group.png)
+![Most consumed meat average](figures/most_consumed_meat_avg.png)
 
 **<span style="color:#F4E6A1;"><strong>Summary</strong></span>**
 
@@ -31,7 +31,7 @@ Pigmeat and bovine meat dominate consumption only in a smaller subset of countri
 
 ![Global distribution by meat type](figures/GlobalDistributionofmeatConsumption.png)
 
-![Top 10 countries by meat type](figures/Top10CountriesbymeatConsumption.pdf.png)
+![Top 10 countries by meat type](figures/Top10CountriesbymeatConsumption.png)
 
 **<span style="color:#F4E6A1;"><strong>Summary</strong></span>**
 
@@ -68,7 +68,7 @@ This global metric represents an unweighted average across countries and should 
 
 To identify the highest overall meat consumers, total per-capita meat consumption was computed as the sum of bovine, pigmeat, poultry, and mutton & goat meat consumption and then averaged per country over the 2010–2022 period.
 
-The top five countries consistently occupy the upper extreme of the global distribution, exhibiting high per-capita intake across multiple years.
+The top ten countries consistently occupy the upper extreme of the global distribution, exhibiting high per-capita intake across multiple years.
 
 **<span style="color:#F4E6A1;"><strong>Outlier and data coverage note</strong></span>**
 
