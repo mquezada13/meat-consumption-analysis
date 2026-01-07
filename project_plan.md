@@ -4,14 +4,14 @@
 To visualize a map of the general structure of our project. 
 Three main phases are fully specified in this section
 
-- [1 – Data Processing](#1---data--processing)
-- [2 - Data Exploration](#2---data--exploration)
+- [1 – Data Processing](#1---data-processing)
+- [2 - Data Exploration](#2---data-exploration)
 - [3 - Data Modelling ]
 - [4 - Visualization]
 
 
 
-##  1 - Data  Processing
+##  1 - Data Processing
 ### Data Collection
 
 This project integrates real-world datasets from reputable sources, including:
@@ -47,7 +47,7 @@ This project integrates real-world datasets from reputable sources, including:
 - Merge all sources into a master dataset
 - **Save cleaned data in** [`/data/processed/`](data/processed/)
 
-## 2 – Data Exploration
+## 2 - Data Exploration
 
 The goal of this phase is to understand the structure, distribution, and heterogeneity
 of global per-capita meat consumption before any predictive modeling.
