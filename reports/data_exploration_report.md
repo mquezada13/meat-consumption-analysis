@@ -55,7 +55,7 @@ To identify the most typical per-capita meat consumption pattern worldwide, we a
 
 The modal range is approximated using the central portion of the distribution (P40–P60 quantiles), which captures the most densely populated consumption levels and serves as a robust proxy for the distribution mode.
 
-![Global distribution of average meat consumption with modal range highlighted](../figures/GlobalDistributionAverageMeatConsumption_perCountry.png)
+![Global distribution of average meat consumption with modal range highlighted](../figures/GlobalDistributionofAverageMeatConsumptionperCountry.png)
 
 The following countries fall within the modal range of global per-capita meat consumption and represent the most common consumption pattern worldwide:
 
