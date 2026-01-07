@@ -39,57 +39,57 @@ The project is organized around the following core questions:
 The folder structure of this project is summarized below.  
 ***
 
-meat-conssuption-analysis/
+    meat-conssuption-analysis/
 
-    README.md
+        README.md
 
-    project_plan.md
+        project_plan.md
 
-    requirements.txt
+        requirements.txt
 
-    notebooks/
+        notebooks/
 
-        01_data_processing.ipynb
+            01_data_processing.ipynb
 
-        02_data_exploration.ipynb
+            02_data_exploration.ipynb
 
-        03_data_modeling.ipynb
+            03_data_modeling.ipynb
 
-        04_visualizations.ipynb
+            04_visualizations.ipynb
 
-    Data/
+        Data/
 
-        raw/
+            raw/
 
-            faostat_meat_kg_per_capita.csv
+                faostat_meat_kg_per_capita.csv
 
-            worldbank_gdp_per_capita.csv
+                worldbank_gdp_per_capita.csv
 
-            worldbank_urban_population.csv
+                worldbank_urban_population.csv
 
-            share-of-the-world-population-with-at-least-basic-education.csv
+                share-of-the-world-population-with-at-least-basic-education.csv
 
-            food_enviroment_impact.csv
+                food_enviroment_impact.csv
 
-            global-meat-production.csv
+                global-meat-production.csv
 
-        processed/
+            processed/
 
-            meat_processed_merged_data.csv
+                meat_processed_merged_data.csv
 
-    src/
+        src/
 
-        data_preprocessing.py
+            data_preprocessing.py
 
-        model_utils.py
+            model_utils.py
 
-        visualization.py
+            visualization.py
 
-        data_loader.py
+            data_loader.py
 
-    reports/
+        reports/
 
-        data_eprocessing_report.md
+            data_eprocessing_report.md
 
 ***
 For a detailed step-by-step plan, see [`project_plan.md`](project_plan.md).
