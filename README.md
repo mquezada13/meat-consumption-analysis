@@ -37,11 +37,15 @@ The project is organized around the following core questions:
 ## Repository Structure
 
 The folder structure of this project is summarized below.  
+***
 
 meat-conssuption-analysis:
     README.md
+
     project_plan.md
+
     requirements.txt
+
     notebooks/
 
         01_data_processing.ipynb
@@ -86,7 +90,7 @@ meat-conssuption-analysis:
 
         data_eprocessing_report.md
 
-
+***
 For a detailed step-by-step plan, see [`project_plan.md`](project_plan.md).
 
 ---
