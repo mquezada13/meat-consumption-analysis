@@ -6,7 +6,7 @@ Three main phases are fully specified in this section
 
 - [1 – Data Processing](#1---data-processing)
 - [2 - Data Exploration](#2---data-exploration)
-- [3 – Data Modeling](#3---data-modeling)
+- [3 - Data Modeling](#3---data-modeling)
 - [4 - Visualization]
 
 
@@ -74,7 +74,7 @@ for the modeling stage, ensuring that predictive models are not driven by extrem
 unrepresentative observations.
 
 
-## 3 – Data Modeling
+## 3 - Data Modeling
 
 The objective of this phase is to quantify the relationship between socioeconomic
 factors and per-capita meat consumption across countries using interpretable
