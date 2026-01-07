@@ -6,8 +6,8 @@ Three main phases are fully specified in this section
 
 - [1 – Data Processing](#1---data--processing)
 - [2 - Data Exploration](#2---data--exploration)
-- [2 - Data Modelling ]
-- [3 - Visualization]
+- [3 - Data Modelling ]
+- [4 - Visualization]
 
 
 
