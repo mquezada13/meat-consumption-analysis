@@ -39,13 +39,9 @@ The project is organized around the following core questions:
 The folder structure of this project is summarized below.  
 
 meat-conssuption-analysis:
-
     README.md
-
     project_plan.md
-
     requirements.txt
-
     notebooks/
 
         01_data_processing.ipynb
