@@ -45,7 +45,33 @@ This project integrates real-world datasets from reputable sources, including:
 - Normalize country and year columns across all datasets
 - Transform World Bank data to long format
 - Merge all sources into a master dataset
-- **Save cleaned data in** [`/Data/processed/`](Data/processed/)
+- **Save cleaned data in** [`/data/processed/`](data/processed/)
+
+## 2 – Data Exploration (EDA)
+
+The goal of this phase is to understand the structure, distribution, and heterogeneity
+of global per-capita meat consumption before any predictive modeling.
+
+This stage focuses on identifying dominant consumption patterns, variability across
+countries, and potential outliers that may influence downstream modeling decisions.
+
+### Key questions addressed:
+- Which meat types dominate global per-capita consumption?
+- How is meat consumption distributed across countries?
+- Which countries lie in the extreme high-consumption tail?
+- Which countries represent the modal (most common) consumption range?
+- How has global average meat consumption evolved over time?
+
+### Methods:
+- Univariate and multivariate visualizations (histograms, line plots)
+- Distributional analysis of per-capita consumption
+- Identification of modal ranges and extreme outliers
+- Descriptive statistics aggregated by country and year
+
+### Outcome:
+This phase informs feature selection, transformation choices, and robustness strategies
+for the modeling stage, ensuring that predictive models are not driven by extreme or
+unrepresentative observations.
 
 
 
