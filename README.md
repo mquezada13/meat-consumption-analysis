@@ -39,30 +39,55 @@ The project is organized around the following core questions:
 The folder structure of this project is summarized below.  
 
 meat-conssuption-analysis:
+
     README.md
+
     project_plan.md
+
     requirements.txt
+
     notebooks/
+
         01_data_processing.ipynb
+
         02_data_exploration.ipynb
+
         03_model_training.ipynb
+
         04_visualizations.ipynb
+
     Data/
+
         raw/
+
             faostat_meat_kg_per_capita.csv
+
             worldbank_gdp_per_capita.csv
+
             worldbank_urban_population.csv
-            share-of-the-world-population-with-at-least-basic-education.csv'
+
+            share-of-the-world-population-with-at-least-basic-education.csv
+
             food_enviroment_impact.csv
+
             global-meat-production.csv
+
         processed/
+
             meat_processed_merged_data.csv
+
     src/
+
         data_preprocessing.py
+
         model_utils.py
+
         visualization.py
+
         data_loader.py
+
     reports/
+    
         data_eprocessing_report.md
 
 
