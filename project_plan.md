@@ -47,7 +47,7 @@ This project integrates real-world datasets from reputable sources, including:
 - Merge all sources into a master dataset
 - **Save cleaned data in** [`/data/processed/`](data/processed/)
 
-## 2 – Data Exploration (EDA)
+## 2 – Data Exploration
 
 The goal of this phase is to understand the structure, distribution, and heterogeneity
 of global per-capita meat consumption before any predictive modeling.
