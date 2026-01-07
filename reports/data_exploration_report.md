@@ -19,7 +19,6 @@ Detailed processing decisions are documented in the data processing report.
 
 ![Most consumed meat (average)](../figures/most_consumed_meat_avg.png)
 
-
 **<span style="color:#F4E6A1;"><strong>Summary</strong></span>**
 
 Across all consumption groups and time periods considered, poultry meat is the most widely consumed meat type and the dominant contributor to total per-capita meat consumption.  
@@ -35,10 +34,9 @@ Pigmeat and bovine meat dominate consumption only in a smaller subset of countri
 
 ![Top 10 countries by meat type](../figures/Top10CountriesbymeatConsumption.png)
 
-
 **<span style="color:#F4E6A1;"><strong>Summary</strong></span>**
 
-Across all meat categories, the countries with the highest per-capita consumption lie in the extreme right tail of the global distribution and represent only a small fraction of the total number of countries.
+Across all meat categories, the countries with the highest per-capita consumption lie in the extreme right tail of the global per-capita consumption distribution and represent only a small fraction of the total number of countries.
 
 While these top-consuming countries reach very high intake levels, they do not drive the overall global consumption pattern.
 
@@ -51,7 +49,36 @@ The strong skewness and heterogeneity observed across meat-specific distribution
 
 ---
 
-### 2.3 Evolution of Global Per-Capita Meat Consumption (2010–2022)
+### 2.3 Modal Range of Global Meat Consumption
+
+To identify the most typical per-capita meat consumption pattern worldwide, we analyze the distribution of average meat consumption across countries.
+
+The modal range is approximated using the central portion of the distribution (P40–P60 quantiles), which captures the most densely populated consumption levels and serves as a robust proxy for the distribution mode.
+
+![Global distribution of average meat consumption with modal range highlighted](../figures/GlobalDistribution_AverageMeatConsumption_perCountry.png)
+
+The following countries fall within the modal range of global per-capita meat consumption and represent the most common consumption pattern worldwide:
+
+| Country    | Avg. meat consumption (kg/person/year) |
+|------------|-----------------------------------------|
+| Uganda     | 10.68 |
+| Togo       | 11.24 |
+| Guinea     | 11.84 |
+| Ghana      | 11.97 |
+| Lesotho   | 12.16 |
+| Kenya     | 12.41 |
+| Cambodia  | 12.91 |
+| Indonesia | 13.63 |
+| Nepal     | 13.99 |
+| Bhutan    | 14.01 |
+
+**<span style="color:#F4E6A1;"><strong>Interpretation</strong></span>**
+
+This group of countries characterizes the most representative global consumption behavior, in contrast to high-consuming outliers located in the extreme right tail of the distribution.
+
+---
+
+### 2.4 Evolution of Global Per-Capita Meat Consumption (2010–2022)
 
 ![Global average meat consumption over time](../figures/GlobalAverageMeatConsumptionOvertheYears.png)
 
@@ -63,7 +90,7 @@ This global metric represents an unweighted average across countries and should 
 
 ---
 
-### 2.4 Top 10 Countries by Overall Meat Consumption
+### 2.5 Top 10 Countries by Overall Meat Consumption
 
 ![Top 10 countries time series](../figures/Top10CountriesbyAverageMeatConsumptionOverTime.png)
 
@@ -71,7 +98,7 @@ This global metric represents an unweighted average across countries and should 
 
 To identify the highest overall meat consumers, total per-capita meat consumption was computed as the sum of bovine, pigmeat, poultry, and mutton & goat meat consumption and then averaged per country over the 2010–2022 period.
 
-The top ten countries consistently occupy the upper extreme of the global distribution, exhibiting high per-capita intake across multiple years.
+The top ten countries consistently occupy the upper extreme of the global per-capita consumption distribution, exhibiting high intake levels across multiple years.
 
 **<span style="color:#F4E6A1;"><strong>Outlier and data coverage note</strong></span>**
 
@@ -90,5 +117,6 @@ Given the presence of extreme high-consuming countries and incomplete time cover
 
 - Meat consumption distributions are highly skewed and heterogeneous across countries  
 - Poultry consumption dominates global per-capita patterns  
+- Most countries lie within a moderate, well-defined modal consumption range  
 - Extreme outliers exist but represent a small subset of observations  
 - Modeling strategies should explicitly account for skewness, heterogeneity, and data coverage differences
