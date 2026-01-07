@@ -52,7 +52,7 @@ meat-conssuption-analysis:
 
         02_data_exploration.ipynb
 
-        03_model_training.ipynb
+        03_data_modeling.ipynb
 
         04_visualizations.ipynb
 
@@ -87,7 +87,7 @@ meat-conssuption-analysis:
         data_loader.py
 
     reports/
-    
+
         data_eprocessing_report.md
 
 
