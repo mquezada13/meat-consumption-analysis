@@ -74,7 +74,7 @@ The following countries fall within the modal range of global per-capita meat co
 
 **<span style="color:#F4E6A1;"><strong>Interpretation</strong></span>**
 
-This group of countries characterizes the most representative global consumption behavior, in contrast to high-consuming outliers located in the extreme right tail of the distribution.
+This group of countries characterizes the most representative global consumption behavior, in contrast to high-consuming outliers located in the extreme right tail of the distribution. **Modal range (bin with highest frequency): 10.48 – 18.18 kg/person/year**
 
 ---
 
