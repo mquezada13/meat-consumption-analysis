@@ -1,166 +1,196 @@
 # 🌍 Project Plan – What Drives Meat Consumption?
 
 ## Objective of project_plan.md
-To visualize a map of the general structure of our project. 
-Three main phases are fully specified in this section
+
+This document outlines the **conceptual structure and analytical flow** of the project.
+It serves as a roadmap describing the reasoning behind each phase, from raw data
+processing to final model interpretation.
+
+The project is organized into **three main phases**:
 
 - [1 – Data Processing](#1---data-processing)
-- [2 - Data Exploration](#2---data-exploration)
-- [3 - Data Modeling](#3---data-modeling)
-- [4 - Visualization]
+- [2 – Exploratory Data Analysis](#2---data-exploration)
+- [3 – Modeling, Evaluation & Interpretation](#3---data-modeling)
 
+---
 
+## 1 – Data Processing
 
-##  1 - Data Processing
 ### Data Collection
 
-This project integrates real-world datasets from reputable sources, including:
+This project integrates real-world datasets from reputable public sources:
 
-  * [FAO – Food Balance Sheets](https://www.fao.org/faostat/en/#data/FBS)  
-  * [World Bank – GDP per capita](https://data.worldbank.org/indicator/NY.GDP.PCAP.CD)  
-  * [World Bank – Urban Population (%)](https://data.worldbank.org/indicator/SP.URB.TOTL.IN.ZS) 
-  * [OWID – Global Meat Production](https://ourworldindata.org/grapher/global-meat-production?v=1&csvType=full&useColumnShortNames=false) 
-  * [OWID – Environmental Impact of Food](https://ourworldindata.org/environmental-impacts-of-food)  
-  * [OWID – Education Data](https://ourworldindata.org/education)  
+- [FAO – Food Balance Sheets](https://www.fao.org/faostat/en/#data/FBS)  
+- [World Bank – GDP per capita](https://data.worldbank.org/indicator/NY.GDP.PCAP.CD)  
+- [World Bank – Urban Population (%)](https://data.worldbank.org/indicator/SP.URB.TOTL.IN.ZS)  
+- [OWID – Global Meat Production](https://ourworldindata.org/grapher/global-meat-production?v=1&csvType=full&useColumnShortNames=false)  
+- [OWID – Education Data](https://ourworldindata.org/education)  
 
-**Key features of interest are:**
+### Core Variables
 
-- **Target variable:**
-  - Meat consumption per capita (kg/person/year)
-- **Predictive features (by country):**
+- **Target variable**
+  - Total meat consumption per capita (kg/person/year)
+
+- **Candidate predictive features**
   - GDP per capita
   - Urban population (%)
-  - Total calorie intake per person
-  - Food prices (if available)
-  - Meat production
-  - Basic education
-- **Environmental impact assessment (analytical component, not predictive):**
-  - Use published environmental impact factors (e.g. kg CO₂, liters of water, m² of land per kg of food) to estimate national-level impact
-  - Combine with country-level education data to compute per capita environmental footprints
-  - This analysis is meant to inform and visualize,  not predict—environmental consequences
+  - Meat production (initially considered)
+  - Additional socioeconomic indicators (as available)
 
-###  Data Cleaning & Integration
-- Inspect and compare meat consumption sources (FAO, World Bank, OWID)
-- Select and format the target variable
-- Normalize country and year columns across all datasets
-- Transform World Bank data to long format
-- Merge all sources into a master dataset
-- **Save cleaned data in** [`/data/processed/`](data/processed/)
+Environmental impact indicators are considered **out of scope for prediction** and are
+treated only as a potential descriptive extension.
 
-## 2 - Data Exploration
+---
 
-The goal of this phase is to understand the structure, distribution, and heterogeneity
-of global per-capita meat consumption before any predictive modeling.
+### Data Cleaning & Integration
 
-This stage focuses on identifying dominant consumption patterns, variability across
-countries, and potential outliers that may influence downstream modeling decisions.
+- Inspect and compare meat consumption sources
+- Normalize country and year identifiers
+- Transform World Bank datasets to long format
+- Merge all sources into a unified master dataset
+- Validate numerical consistency and missing values
+- Save the cleaned dataset in `/data/processed/`
 
-### Key questions addressed:
+This phase produces a **single, analysis-ready dataset** used in all subsequent steps.
+
+---
+
+## 2 – Exploratory Data Analysis
+
+The goal of this phase is to **understand structure, heterogeneity, and distributional
+properties** of global per-capita meat consumption before any modeling.
+
+EDA is explicitly used to **inform modeling decisions**, not merely to visualize data.
+
+### Key Questions
+
 - Which meat types dominate global per-capita consumption?
-- How is meat consumption distributed across countries?
+- How is total meat consumption distributed across countries?
 - Which countries lie in the extreme high-consumption tail?
 - Which countries represent the modal (most common) consumption range?
 - How has global average meat consumption evolved over time?
 
-### Methods:
-- Univariate and multivariate visualizations (histograms, line plots)
-- Distributional analysis of per-capita consumption
+---
+
+### Methods
+
+- Distributional analysis (histograms, density plots)
+- Aggregation at country and year level
 - Identification of modal ranges and extreme outliers
-- Descriptive statistics aggregated by country and year
+- Visual inspection of feature–target relationships
 
-### Outcome:
-This phase informs feature selection, transformation choices, and robustness strategies
-for the modeling stage, ensuring that predictive models are not driven by extreme or
-unrepresentative observations.
+---
 
+### Outcomes
 
-## 3 - Data Modeling
+This phase reveals that:
+- Meat consumption is highly skewed across countries
+- GDP per capita shows strong non-linear saturation effects
+- Urban population exhibits a weaker, noisier relationship
+- Production displays negligible explanatory structure
 
-The objective of this phase is to quantify the relationship between socioeconomic
-factors and per-capita meat consumption across countries using interpretable
-and well-established regression techniques.
+These findings directly motivate:
+- log transformations
+- exclusion of irrelevant features
+- non-linear modeling strategies
 
-This modeling phase intentionally relies on foundational methods to ensure
-transparency, robustness, and clear interpretability, rather than maximizing
-predictive performance.
+---
+
+## 3 – Modeling, Evaluation & Interpretation
+
+The objective of this phase is to **quantify and explain** the relationship between
+socioeconomic factors and per-capita meat consumption using progressively more
+flexible models.
+
+The focus is on **interpretability, robustness, and empirical justification** rather
+than maximizing predictive performance alone.
 
 ---
 
 ### 3.1 Problem Definition
 
-- **Task:** Supervised regression  
+- **Task:** Supervised regression
 - **Target variable:**  
-  - Total meat consumption per capita (kg/person/year)
-- **Predictor variables:**  
+  - Total meat consumption per capita  
+  - Modeled in log space to reduce skewness
+- **Final predictors:**  
   - GDP per capita  
-  - Urban population (%)  
-  - Meat production  
-  - Additional socioeconomic features as available
+  - Urban population (%)
 
-The modeling task focuses on explaining cross-country differences in meat
-consumption rather than forecasting future values.
+Meat production is excluded based on EDA diagnostics.
 
 ---
 
 ### 3.2 Modeling Dataset
 
-- Data will be aggregated at the **country level** by averaging values over
-  the 2010–2022 period.
-- Each observation corresponds to a single country.
-- This approach reduces temporal noise and avoids information leakage while
-  remaining consistent with insights obtained during the exploratory analysis.
+- Data are aggregated at the **country level**
+- Values are averaged over the 2010–2022 period
+- Each observation corresponds to one country
+
+This approach:
+- reduces temporal noise
+- avoids leakage
+- aligns with EDA findings
 
 ---
 
 ### 3.3 Modeling Strategy
 
-The following models will be evaluated:
+Models are evaluated in increasing order of flexibility:
 
-1. **Baseline model**
-   - Ordinary Least Squares (Linear Regression)
-
-2. **Regularized linear models**
+1. **Linear models**
+   - Ordinary Least Squares
    - Ridge Regression
    - Lasso Regression
 
-These models allow for direct interpretation of coefficients and assessment of
-feature relevance.
+2. **Log-transformed models**
+   - Same linear family, applied in log space
+
+3. **Polynomial feature expansion**
+   - Second-order terms to test curvature explicitly
+
+4. **Tree-based model**
+   - Random Forest Regressor
+
+Each step is justified empirically and compared using consistent metrics.
 
 ---
 
-### 3.4 Key Considerations
+### 3.4 Evaluation Metrics
 
-- The target variable exhibits strong skewness and heterogeneity across countries.
-- Extreme high-consuming countries (e.g. Tonga) will be retained but analyzed
-  separately to assess their influence on model stability.
-- Model performance will be evaluated both including and excluding extreme outliers
-  as a robustness check.
+Model performance is assessed using:
+- R²
+- RMSE
+- MAE
+
+Comparisons emphasize:
+- generalization
+- residual structure
+- interpretability
+- robustness to extreme values
 
 ---
 
-### 3.5 Evaluation Metrics
+### 3.5 Model Interpretation
 
-Model performance will be assessed using:
-- R² (coefficient of determination)
-- RMSE (Root Mean Squared Error)
-- MAE (Mean Absolute Error)
+The final model is interpreted using:
+- residual diagnostics
+- actual vs predicted plots with error bands
+- partial dependence plots (1D and 2D)
+- feature importance analysis
 
-Comparisons across models will focus on both predictive accuracy and stability
-of learned relationships.
+These tools are used to understand **how** and **why** predictors influence meat
+consumption, not only whether predictions are accurate.
 
 ---
 
 ### 3.6 Expected Outcomes
 
-At the end of this phase, the analysis will:
-- Identify which socioeconomic variables are most strongly associated with
-  per-capita meat consumption
-- Quantify the explanatory power of linear models
-- Assess the impact of extreme outliers on model results
-- Provide a transparent and interpretable baseline for potential future extensions
+At the end of this phase, the project delivers:
+- a justified final predictive model
+- empirical evidence for feature relevance
+- clear documentation of modeling decisions
+- a transparent narrative connecting EDA to modeling choices
 
-
-
-
-
-
+The resulting model is intended as a **descriptive and predictive tool**, not a causal
+estimator.
