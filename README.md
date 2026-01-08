@@ -1,36 +1,43 @@
 <p align="left">
-<img src="https://img.shields.io/badge/STATUS-IN%20DEVELOPMENT-green">
+<img src="https://img.shields.io/badge/STATUS-STABLE-blue">
 </p>
 
 # 🌿 What Drives Meat Consumption?
 
 ## Overview
 
-This project investigates **what drives meat consumption per capita across countries** using real-world socioeconomic and environmental data.  
-The primary goal is to **build interpretable predictive models** that explain cross-country variation in meat consumption, while maintaining a strong focus on analytical reasoning, model evaluation, and clear communication.
+This project investigates **what drives per-capita meat consumption across countries** using real-world socioeconomic data.  
+The objective is to **build interpretable predictive models** that explain cross-country variation in meat consumption, with a strong emphasis on analytical reasoning, model diagnostics, and transparent decision-making.
 
-The project is designed as a **professional data science case study**, emphasizing decision-making over purely descriptive analysis.
+The project is structured as a **professional end-to-end data science case study**, prioritizing model justification and interpretability over purely descriptive analysis or performance chasing.
 
 ---
 
 ## Motivation
 
-As a vegetarian interested in data-driven decision-making, I frequently encounter claims about the impact of dietary choices on health, the environment, and society. This project approaches the topic from a **descriptive and predictive perspective**, without normative judgments, using data to understand *patterns* rather than to advocate for specific behaviors.
+As a vegetarian interested in data-driven reasoning, I frequently encounter claims regarding the impact of dietary choices on health, the environment, and society.  
+This project approaches the topic from a **descriptive and predictive perspective**, without normative judgments, using data to understand *structural patterns* rather than to promote specific behaviors.
 
-The objective is twofold:
-- To explore and model meat consumption patterns across countries.
-- To demonstrate applied data analysis and machine learning skills using real, imperfect datasets.
+The goals are:
+- To identify which socioeconomic factors explain most of the variation in meat consumption across countries.
+- To demonstrate applied data science skills using real, imperfect, multi-source datasets.
 
 ---
 
 ## Research Questions
 
-The project is organized around the following core questions:
+The analysis is organized around the following questions:
 
-1. **Can meat consumption per capita be predicted using socioeconomic indicators?**
-2. **Which factors explain most of the variation across countries?**
-3. **How interpretable are different modeling approaches in this context?**
-4. *(Extension)* Do higher predicted consumption levels correlate with higher environmental impact?
+1. **Can per-capita meat consumption be predicted using country-level socioeconomic indicators?**
+2. **Which variables explain most of the cross-country variation?**
+3. **How do linear and non-linear models compare in terms of performance and interpretability?**
+4. *(Optional extension)* How do predicted consumption levels relate to environmental impact metrics?
+
+---
+
+## Repository Structure
+
+
 
 ---
 
@@ -54,8 +61,6 @@ The folder structure of this project is summarized below.
             02_data_exploration.ipynb
 
             03_data_modeling.ipynb
-
-            04_visualizations.ipynb
 
         Data/
 
@@ -81,17 +86,18 @@ The folder structure of this project is summarized below.
 
             data_preprocessing.py
 
-            model_utils.py
-
-            visualization.py
-
             data_loader.py
 
         reports/
 
-            data_eprocessing_report.md
+            data_processing_report.md
+
+            data_modeling_report.md
+
+            data_exploration_report.md
 
 ***
+
 For a detailed step-by-step plan, see [`project_plan.md`](project_plan.md).
 
 ---
@@ -99,9 +105,9 @@ For a detailed step-by-step plan, see [`project_plan.md`](project_plan.md).
 ## Project Phases
 
 ### 1. Data Processing
-- Cleaning and harmonizing country-level datasets.
-- Feature selection and target definition.
-- Final merged dataset stored in `data/processed/`.
+- Cleaning, harmonizing, and merging multiple country-level datasets.
+- Feature selection and target construction.
+- Final dataset stored in `data/processed/`.
 
 📓 Notebook:
 - `01_data_processing.ipynb`
@@ -113,67 +119,70 @@ For a detailed step-by-step plan, see [`project_plan.md`](project_plan.md).
 ---
 
 ### 2. Exploratory Data Analysis
-- Examination of feature distributions and outliers.
-- Analysis of relationships between meat consumption and socioeconomic indicators.
-- Identification of modeling implications (e.g. non-linearity, scaling, collinearity).
+- Distributional analysis and outlier detection.
+- Feature–target relationship inspection.
+- Identification of non-linearity, saturation effects, and scale issues.
 
 📓 Notebook:
 - `02_data_exploration.ipynb`
 
-This phase explicitly informs **model selection and feature engineering**, rather than serving as descriptive visualization only.
+EDA is used explicitly to **inform modeling choices**, not only for visualization.
 
 ---
 
-### 3. Predictive Modeling *(in progress)*
-- Supervised regression models to predict meat consumption per capita.
-- Baseline models (e.g. linear regression) and more flexible approaches (e.g. regularized models, tree-based methods).
-- Model evaluation using appropriate metrics (RMSE, R²).
-- Emphasis on **interpretability and generalization**, not leaderboard optimization.
+### 3. Modeling, Evaluation, and Interpretation
+- Linear, regularized, polynomial, and tree-based models.
+- Log-transformed target to address skewness and heteroscedasticity.
+- Cross-validation and residual diagnostics.
+- Model comparison based on performance *and* interpretability.
+
+**Visualization & Communication**
+
+- Diagnostic plots (actual vs predicted, residuals).
+- Partial Dependence Plots (PDPs).
+- Feature importance analysis.
+- Clear narrative linking EDA, modeling decisions, and results.
 
 📓 Notebook:
-- `03_model_training.ipynb`
+- `03_data_modeling.ipynb`
+
+📄 Report:
+- `reports/modeling_report.md`
+
+**Final model:** Random Forest Regressor  
+Selected due to its ability to capture non-linear saturation effects and feature interactions.
 
 ---
 
-### 4. Interpretation & Visualization *(planned)*
-- Feature importance and model explainability.
-- Comparative analysis across regions.
-- Clear visual communication of results.
+## Key Findings
 
-📓 Notebook:
-- `04_visualizations.ipynb`
-
----
-
-## Data Sources
-
-This project uses publicly available global datasets:
-
-### 🥩 Meat Consumption
-- FAOSTAT – Food Balance Sheets  
-  *Annual meat consumption (kg per capita)*
-
-### 🌍 Socioeconomic Indicators
-- World Bank – GDP per capita  
-- World Bank – Urban population (%)
-- Our World in Data – Education indicators
-- Our World in Data – Global meat production
-
-### 🌱 Environmental Context *(extension)*
-- Our World in Data – Environmental impacts of food production
+- **GDP per capita** is the dominant driver of per-capita meat consumption, exhibiting strong non-linear saturation.
+- **Urban population** plays a secondary, context-dependent role.
+- **Production** shows negligible explanatory power and is excluded.
+- Linear models fail structurally; log-transformed models improve but remain limited.
+- Random Forest models capture non-linearities and interactions effectively.
 
 ---
 
 ## Scope and Limitations
 
-- This project focuses on **prediction and explanation**, not causal inference.
-- Country-level aggregation limits individual-level conclusions.
-- Environmental analysis is treated as a correlational extension.
+- Country-level aggregation masks within-country heterogeneity.
+- No causal interpretation is claimed.
+- Results should be interpreted as **descriptive and predictive**, not causal.
+
+---
+
+## Possible Extensions
+
+- Environmental impact modeling
+- Population-weighted targets
+- Additional socioeconomic indicators (education, prices, dietary composition)
+
+These are intentionally left as **optional extensions**, not part of the core analysis.
 
 ---
 
 ## Author
 
-**Maura E. Ramirez-Quezada**
-
+**Maura E. Ramirez-Quezada**  
 Contact: elizza.rmz91@gmail.com
