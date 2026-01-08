@@ -1,5 +1,5 @@
 <p align="left">
-<img src="https://img.shields.io/badge/STATUS-SOLID%20FIRST%20CUT-purple">
+<img src="https://img.shields.io/badge/STATUS-V1%20DONE%20%F0%9F%8C%BF-purple">
 </p>
 
 # 🌿 What Drives Meat Consumption?
